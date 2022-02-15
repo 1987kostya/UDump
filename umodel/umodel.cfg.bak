@@ -1,0 +1,19 @@
+Export =
+{
+    ExportPath = "D:\umodel\UmodelExport"
+    ExportDdsTexture = false
+    SkeletalMeshFormat = 0
+    StaticMeshFormat = 0
+    TextureFormat = 2
+    ExportMeshLods = false
+    SaveUncooked = false
+    SaveGroups = false
+    DontOverwriteFiles = false
+}
+SavePackages =
+{
+    SavePath = "H:/umodel/UmodelSaved"
+    KeepDirectoryStructure = true
+}
+bShowExportOptions = true
+bShowSaveOptions = true

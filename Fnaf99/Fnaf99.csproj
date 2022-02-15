@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4C55314A-8520-4459-A674-C5364F0064E2}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Fnaf99</RootNamespace>
+    <AssemblyName>Fnaf99</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX">
+      <HintPath>Refrences\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Desktop">
+      <HintPath>Refrences\SharpDX.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1">
+      <HintPath>Refrences\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI">
+      <HintPath>Refrences\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Mathematics">
+      <HintPath>Refrences\SharpDX.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnrealSharp">
+      <HintPath>C:\Users\ivani\Desktop\UnrealSharp-main\UnrealSharp\bin\Debug\UnrealSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fnaf9_UpdatedSDK\ActorSequence.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Addresses.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AIModule.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AkAudio.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AndroidPermission.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AnimationCore.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AnimationSharing.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AnimGraphRuntime.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AppleImageUtils.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ArchVisCharacter.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AssetRegistry.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AssetTags.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AudioCapture.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AudioExtensions.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AudioMixer.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AudioPlatformConfiguration.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AugmentedReality.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\AvfMediaFactory.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\BuildPatchServices.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\CableComponent.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ChaosCloth.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ChaosNiagara.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ChaosSolverEngine.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ChaosSolvers.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\CinematicCamera.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ClothingSystemRuntimeCommon.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ClothingSystemRuntimeInterface.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ClothingSystemRuntimeNv.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\CoreUObject.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\CustomMeshComponent.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\DatasmithContent.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\EditableMesh.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Engine.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\EngineMessages.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\EngineSettings.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\EyeTracker.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\FacialAnimation.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\FieldSystemCore.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\FieldSystemEngine.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\fnaf9.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Foliage.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\GameplayTags.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\GameplayTasks.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\GeometryCache.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\GeometryCacheTracks.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\GeometryCollectionCore.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\GeometryCollectionEngine.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\GeometryCollectionSimulationCore.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\GeometryCollectionTracks.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\GooglePAD.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\HeadMountedDisplay.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ImageWrapper.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ImageWriteQueue.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ImgMedia.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ImgMediaFactory.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\InputCore.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\InteractiveToolsFramework.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\JsonUtilities.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Landscape.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\LevelSequence.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\LightPropagationVolumeRuntime.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\LiveLinkInterface.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\LocationServicesBPLibrary.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\LuminRuntimeSettings.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeap.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapAR.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapARPin.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapController.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapEyeTracker.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapHandMeshing.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapHandTracking.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapIdentity.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapImageTracker.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapLightEstimation.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapPlanes.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapPrivileges.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MagicLeapSharedWorld.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MaterialShaderQualitySettings.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MediaAssets.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MediaCompositing.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MediaUtils.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MeshDescription.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MoviePlayer.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MovieScene.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MovieSceneCapture.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MovieSceneTracks.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\MRMesh.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\NavigationSystem.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\NetCore.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Niagara.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\NiagaraAnimNotifies.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\NiagaraCore.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\NiagaraShader.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\OnlineSubsystem.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\OnlineSubsystemSteam.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\OnlineSubsystemUtils.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Overlay.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\PacketHandler.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Paper2D.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\PhysicsCore.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\PhysXVehicles.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\ProceduralMeshComponent.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\PropertyPath.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\RandomItemSystem.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Renderer.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\RoomSystem.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\RTXGI.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Serialization.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\SessionMessages.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\SignificanceManager.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Slate.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\SlateCore.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\SoundFields.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Spatialization.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\StaticMeshDescription.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\SWGPlatformUtil.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\Synthesis.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\TcpMessaging.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\TemplateSequence.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\TimeManagement.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\UdpMessaging.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\UMG.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\UObjectPlugin.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\VariantManagerContent.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\VectorVM.cs" />
+    <Compile Include="fnaf9_UpdatedSDK\WmfMediaFactory.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
