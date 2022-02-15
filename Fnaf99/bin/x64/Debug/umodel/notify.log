@@ -1,0 +1,19 @@
+
+******** Loading object SkeletalMesh4'Banner_Flag_Gadget.Banner_Flag_Gadget' ********
+
+ERROR: assertion failed: LODModels.Num() == LODInfo.Num()
+
+USkeletalMesh4::ConvertMesh <- USkeletalMesh4::Serialize <- LoadObject: SkeletalMesh4'Banner_Flag_Gadget.Banner_Flag_Gadget', pos=16702, ver=522/0, game=ue4.26 <- UObject::EndLoad <- LoadWholePackage: /Game/Animation/Props/BannerFlag/Meshes/Banner_Flag_Gadget.uasset <- CUmodelApp::ShowPackageUI <- CUmodelApp::ProcessKey: key=6F, down=1 <- VisualizerLoop <- Main: umodel_build=1556
+
+
+******** Loading object StaticMesh4'MOD_ChicaPose01.MOD_ChicaPose01' ********
+
+ERROR: Memory: bad allocation size -358028800 bytes
+appMalloc: size=-358028800 (total=15 Mbytes) <- FArray::Empty: 164039104 x 24 <- TArray::Serialize: 0/0 <- FStaticMeshLODModel4<< <- TArray::Serialize: 2/4 <- UStaticMesh4::Serialize <- LoadObject: StaticMesh4'MOD_ChicaPose01.MOD_ChicaPose01', pos=45994, ver=518/0 (unversioned), game=ue4.25 <- UObject::EndLoad <- LoadWholePackage: /Game/Models/Plushie/Chica/MOD_ChicaPose01.uasset <- CUmodelApp::ShowPackageUI <- CUmodelApp::ProcessKey: key=6F, down=1 <- VisualizerLoop <- Main: umodel_build=1556
+
+
+******** Loading object Skeleton'Freddy_Skeleton.Freddy_Skeleton' ********
+
+ERROR: Memory: bad allocation size -335544320 bytes
+appMalloc: size=-335544320 (total=5 Mbytes) <- FArray::Empty: -16777216 x 20 <- TArray::Serialize: 0/0 <- FSmartNameMapping<< <- TArray::Serialize: 1/2 <- SmartNames <- USkeleton::Serialize <- LoadObject: Skeleton'Freddy_Skeleton.Freddy_Skeleton', pos=35C7, ver=513/0 (unversioned), game=ue4.17 <- UObject::EndLoad <- LoadWholePackage: /Game/Game/Character/Freddy/Freddy.uasset <- CUmodelApp::ShowPackageUI <- CUmodelApp::ProcessKey: key=6F, down=1 <- VisualizerLoop <- Main: umodel_build=1556
+
