@@ -29,7 +29,7 @@ namespace Fnaf99
         }
         public bool ConnectToProcess()
         {
-            process = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.Contains("fnaf9-Win64-Shipping") && p.MainWindowHandle != IntPtr.Zero);
+            process = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.Contains(Program.settings.gameName) && p.MainWindowHandle != IntPtr.Zero);
             if (CheckProc())
             {
                 var ue = new UnrealEngine(new Memory(process));
@@ -69,10 +69,31 @@ namespace Fnaf99
             umodelInsts.Text = "UModel Instances: " + procs.Length;
 
         }
-
+        World world;
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if(ConnectToProcess()) isConnected.Text = "Connected";
+            if (ConnectToProcess())
+            {
+                isConnected.Text = "Connected";
+                ulong entityList = UnrealEngine.Memory.ReadProcessMemory<ulong>(UnrealEngine.Memory.BaseAddress + UnrealEngine.GObjects);
+                uint count = UnrealEngine.Memory.ReadProcessMemory<uint>(UnrealEngine.Memory.BaseAddress + UnrealEngine.GObjects + 20UL);
+                entityList = UnrealEngine.Memory.ReadProcessMemory<ulong>(entityList);
+                var objs = new UEObject(entityList);
+                for (uint i = 0U; i < count; i += 1U)
+                {
+                    ulong entityAddr = UnrealEngine.Memory.ReadProcessMemory<ulong>(entityList + (ulong)(8U * (i >> 16)) + (ulong)(24U * (i % 65536U)));
+                    if (entityAddr != 0UL)
+                    {
+                        if (new UEObject(entityAddr).GetName() == "Default__KismetSystemLibrary")
+                        {
+                            kismetSystemLibAddr = entityAddr;
+                            break;
+
+                        }
+                    }
+                }
+
+            }
             mainTimer.Tick += Tick;
             umodelTimer.Tick += UmodelTick;
 
@@ -83,6 +104,24 @@ namespace Fnaf99
             if (ConnectToProcess())
             {
                 isConnected.Text = "Connected";
+
+                ulong entityList = UnrealEngine.Memory.ReadProcessMemory<ulong>(UnrealEngine.Memory.BaseAddress + UnrealEngine.GObjects);
+                uint count = UnrealEngine.Memory.ReadProcessMemory<uint>(UnrealEngine.Memory.BaseAddress + UnrealEngine.GObjects + 20UL);
+                entityList = UnrealEngine.Memory.ReadProcessMemory<ulong>(entityList);
+                var objs = new UEObject(entityList);
+                for (uint i = 0U; i < count; i += 1U)
+                {
+                    ulong entityAddr = UnrealEngine.Memory.ReadProcessMemory<ulong>(entityList + (ulong)(8U * (i >> 16)) + (ulong)(24U * (i % 65536U)));
+                    if (entityAddr != 0UL)
+                    {
+                        if(new UEObject(entityAddr).GetName()== "Default__KismetSystemLibrary")
+                        {
+                            kismetSystemLibAddr = entityAddr;
+                            break;
+
+                        }
+                    }
+                }
             }
         }
         static void Log(string msg)
@@ -185,14 +224,15 @@ namespace Fnaf99
             }
 
         }
-        World world;
+        ulong kismetSystemLibAddr;
         void Dump()
         {
+            objects.Clear();
             int staticMeshActorCount = 0;
-            ulong addr = (ulong)process.MainModule.BaseAddress.ToInt64() + 0x44291A0;
-            addr = UnrealEngine.Memory.ReadProcessMemory<ulong>(addr);
-            addr = UnrealEngine.Memory.ReadProcessMemory<ulong>(addr + 0x118);
-            var kismetSysLib = new KismetSystemLibrary(addr);
+            //ulong addr = (ulong)process.MainModule.BaseAddress.ToInt64() + 0x44291A0;
+            //addr = UnrealEngine.Memory.ReadProcessMemory<ulong>(addr);
+            //addr = UnrealEngine.Memory.ReadProcessMemory<ulong>(addr + 0x118);
+            var kismetSysLib = new KismetSystemLibrary(kismetSystemLibAddr);
             Directory.CreateDirectory("Dump");
             //world = new World(UnrealEngine.Memory.ReadProcessMemory<UInt64>(UnrealEngine.GWorldPtr));
             var worldObj = world.Levels;
@@ -315,6 +355,21 @@ namespace Fnaf99
                             }
                             else
                             {
+                               var pos = Actor.K2_GetActorLocation();
+                               var rot = Actor.K2_GetActorRotation();
+                               var scl = Actor.GetActorScale3D();
+
+                               var newObject = new UEObjectInfo();
+
+                               //KismetSystemLibrary
+                               newObject.path = Actor.GetShortName();
+                               newObject.type = "dummy";
+                               newObject.position = pos;
+                               newObject.rotation = rot;
+                               newObject.scale = scl;
+                               objects.Add(newObject);
+                               /*
+
                                 var realActor = Actor.As<Actor>();
 
                                 var root = realActor["RootComponent"];

@@ -15,28 +15,33 @@ class TextureData:
     nonInstanced=False
     matName = ""
 def copyOrImportPsk(filePath):
-    global pskObjectCache
-    if pskObjectCache.get(filePath) is None:
+    if True:
         importResult = pskimport(filePath,bpy.context,bReorientBones=True)
-        if importResult:
-            imported = bpy.context.active_object
+        return (True,bpy.context.active_object)
+    else:
+        global pskObjectCache
+        if pskObjectCache.get(filePath) is None:
+            importResult = pskimport(filePath,bpy.context,bReorientBones=True)
+            if importResult:
+               imported = bpy.context.active_object
+                bpy.ops.object.select_all(action='DESELECT')
+                imported.select_set(True)
+                bpy.ops.object.duplicate()
+                duplicated = bpy.context.active_object
+                pskObjectCache[filePath] = duplicated
+                duplicated.location=(0,0,15)
+                print(importResult)
+                return (True,imported)
+            else:
+                return (False,None)
+        else:
             bpy.ops.object.select_all(action='DESELECT')
-            imported.select_set(True)
+            pskObjectCache[filePath].select_set(True)
             bpy.ops.object.duplicate()
             duplicated = bpy.context.active_object
-            pskObjectCache[filePath] = duplicated
-            duplicated.location=(0,0,15)
-            print(importResult)
-            return (True,imported)
-        else:
-            return (False,None)
-    else:
-        bpy.ops.object.select_all(action='DESELECT')
-        pskObjectCache[filePath].select_set(True)
-        bpy.ops.object.duplicate()
-        duplicated = bpy.context.active_object
-        #duplicated.location = (0,0,15)
-        return (True,duplicated)
+            #duplicated.location = (0,0,15)
+            return (True,duplicated)
+    return (False,None)
 
 def importObject(filePath,xPos,yPos,zPos,xRot,yRot,zRot,xScl,yScl,zScl,texData):
     #t1 = threading.Thread(target=pskimport,args=(filePath,bpy.context))

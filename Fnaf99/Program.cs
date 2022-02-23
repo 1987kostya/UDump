@@ -617,7 +617,7 @@ namespace Fnaf99
         {
             while (true)
             {
-                if (staticGameName != "autogenerate") process = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.Contains(staticGameName) && p.MainWindowHandle != IntPtr.Zero);
+                if (settings.gameName != "autogenerate") process = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.Contains(settings.gameName) && p.MainWindowHandle != IntPtr.Zero);
                 if (process != null) break;
                 Thread.Sleep(500);
             }
@@ -645,7 +645,12 @@ namespace Fnaf99
 
         static void Main(string[] args)
         {
-            settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText("settings.json"));
+            if (File.Exists("settings.json"))
+            {
+                settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText("settings.json"));
+
+            }
+            else settings = new Settings();
             var form = new MainForm();
             Application.Run(form);
             return;
